@@ -1,0 +1,11 @@
+{
+  "journeyDate": "YYYY-MM-DD",
+  "journeyOriginDepartureDate": "YYYY-MM-DD",
+  "travelClass": "SL",
+  "origin": "Origin Station",
+  "destination": "Destination Station",
+  "reminderMinutesBefore": 5,
+  "openOfficialSite": false,
+  "testMode": true,
+  "testDelaySeconds": 15
+}

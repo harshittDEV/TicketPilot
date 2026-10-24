@@ -1,0 +1,53 @@
+name: browser_inspection
+version: 1.0.0
+description: "Safe demonstration skill that navigates to a permitted URL, inspects title and text, captures a screenshot artifact, and returns a structured summary."
+
+required_inputs:
+  - name: test_url
+    type: string
+    description: "The permitted HTTP/HTTPS URL to inspect"
+    default: "https://example.com"
+    required: true
+
+allowed_tools:
+  - browser
+
+expected_outcomes:
+  - "Target URL is opened successfully"
+  - "Page URL and title are retrieved"
+  - "Bounded text excerpt is extracted"
+  - "Screenshot artifact reference is recorded"
+
+timeout_seconds: 60.0
+human_intervention_required: false
+
+steps:
+  - step_id: step_1_navigate
+    tool_name: browser
+    action_type: navigate
+    parameters:
+      url: "{{ inputs.test_url }}"
+    expected_outcome: "Page navigates to the target URL"
+    description: "Open the target test URL"
+
+  - step_id: step_2_get_url_and_title
+    tool_name: browser
+    action_type: get_url_and_title
+    parameters: {}
+    expected_outcome: "URL and title are returned"
+    description: "Read the current page URL and title"
+
+  - step_id: step_3_extract_text
+    tool_name: browser
+    action_type: extract_text
+    parameters:
+      max_chars: 1000
+    expected_outcome: "Page text excerpt is extracted"
+    description: "Extract visible text from the page"
+
+  - step_id: step_4_screenshot
+    tool_name: browser
+    action_type: screenshot
+    parameters: {}
+    expected_outcome: "Screenshot artifact is created"
+    description: "Capture page screenshot as an artifact"

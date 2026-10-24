@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Instrument Serif", "Newsreader", Georgia, serif;
+  
+  --bg-warm: #FAF8F5;
+  --ink-primary: #18221D;
+  --ink-muted: #4A5A52;
+  --border-glass: rgba(224, 216, 204, 0.7);
+  --glass-surface: rgba(255, 255, 255, 0.75);
+}
+
+@layer base {
+  * {
+    border-color: rgba(228, 220, 208, 0.75);
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    background-color: #FAF8F5;
+    color: #18221D;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: 
+      radial-gradient(1200px 800px at 15% 10%, rgba(27, 94, 60, 0.035), transparent 70%),
+      radial-gradient(1000px 700px at 85% 20%, rgba(2, 132, 199, 0.035), transparent 70%),
+      radial-gradient(900px 600px at 50% 80%, rgba(224, 93, 68, 0.025), transparent 70%),
+      #FAF8F5;
+    background-attachment: fixed;
+    line-height: 1.5;
+  }
+
+  /* Accessibility: Visible Focus Rings */
+  :focus-visible {
+    outline: 2px solid #1B5E3C;
+    outline-offset: 2px;
+  }
+}
+
+/* Glassmorphism Utilities */
+@layer components {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    border: 1px solid rgba(235, 228, 218, 0.85);
+    box-shadow: 0 4px 20px -2px rgba(24, 34, 29, 0.04), 0 1px 3px 0 rgba(0, 0, 0, 0.02), inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+    border-radius: 1rem;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+  }
+
+  .glass-card-interactive {
+    @apply glass-card;
+  }
+
+  .glass-card-interactive:hover {
+    transform: translateY(-2px);
+    border-color: rgba(210, 200, 188, 0.95);
+    box-shadow: 0 10px 28px -4px rgba(24, 34, 29, 0.08), 0 2px 6px 0 rgba(0, 0, 0, 0.03), inset 0 1px 0 0 rgba(255, 255, 255, 1);
+  }
+
+  .glass-pill {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(230, 222, 210, 0.75);
+    border-radius: 9999px;
+  }
+
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border-bottom: 1px solid rgba(228, 220, 208, 0.85);
+  }
+
+  .depth-layer-1 {
+    transform: translateZ(10px);
+  }
+
+  .depth-layer-2 {
+    transform: translateZ(20px);
+  }
+
+  /* Decorative Subtle Railway Track Ribbon */
+  .railway-ribbon {
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(27, 94, 60, 0.08) 0px,
+      rgba(27, 94, 60, 0.08) 8px,
+      transparent 8px,
+      transparent 16px
+    );
+  }
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .glass-card-interactive:hover {
+    transform: none !important;
+  }
+}

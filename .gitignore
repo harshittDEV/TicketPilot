@@ -1,0 +1,85 @@
+# Root .gitignore for TicketPilot
+
+# Secrets & Environment variables
+.env
+.env.*
+.env.local
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+dist/
+build/
+*.egg-info/
+venv/
+.venv/
+env/
+
+# Node / Frontend
+node_modules/
+.next/
+out/
+.pnp
+.pnp.js
+*.tsbuildinfo
+coverage/
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+data/*.db
+tatkal-agent-backend/data/*.db
+
+# IDE & OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs & Browser Artifacts
+*.log
+logs/
+browser_profiles/
+screenshots/
+recordings/
+sessions/
+tmp/
+temp/
+
+# Local secrets
+**/.env
+**/.env.*
+!**/.env.example
+
+# Python environments and test caches
+**/venv/
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+
+# Frontend dependencies and generated files
+**/node_modules/
+**/.next/
+**/out/
+**/coverage/
+**/*.tsbuildinfo
+
+# Local databases and runtime artifacts
+**/*.db
+**/*.sqlite
+**/*.sqlite3
+**/browser_profiles/
+**/sessions/
+**/recordings/
+**/screenshots/
+**/logs/
+
+# macOS
+.DS_Store
